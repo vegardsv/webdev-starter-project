@@ -1,3 +1,7 @@
+:root {
+  --mainColor: #ddd;
+}
+
 body {
-  background-color: #ddd;
+  background-color: var(--mainColor);
 }
