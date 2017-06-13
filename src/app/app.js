@@ -3,12 +3,13 @@ require('../css/base.css')
 import { render } from 'react-dom'
 import React from 'react'
 import { Provider } from 'react-redux'
-import { counterReducer } from './reducer/counterReducer'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import { createStore } from 'redux'
+
 import Counter from './components/counter'
 import About from './components/about'
 import Home from './components/home'
+import counterReducer from './modules/counter'
 
 const store = createStore(
   counterReducer,

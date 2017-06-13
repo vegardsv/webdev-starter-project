@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions/counterActions'
+import { counterCommands } from '../modules/counter'
 
 let Counter = ({ increment, decrement, num }) =>
   <div>
@@ -10,12 +10,12 @@ let Counter = ({ increment, decrement, num }) =>
   </div>
 
 const mapDispatchToProps = dispatch => ({
-  increment: () => dispatch(actions.increment()),
-  decrement: () => dispatch(actions.decrement())
+  increment: () => dispatch(counterCommands.increment()),
+  decrement: () => dispatch(counterCommands.decrement())
 })
 
 const mapStateToProps = state => ({
-  num: state
+  num: state.counter
 })
 
 Counter = connect(mapStateToProps, mapDispatchToProps)(Counter)

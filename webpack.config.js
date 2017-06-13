@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   entry: './src/app/app.js',
@@ -7,34 +7,35 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-  rules: [
-    {
-      test: /\.js$/,
-      exclude: [/node_modules/],
-      use: [{
-        loader: 'babel-loader',
-        options: { presets: ['es2015', 'react'] },
-      }],
-    },
-    {
-                    test: /\.css$/,
-                    exclude: /node_modules/,
-                    use: [
-                        {
-                            loader: 'style-loader',
-                        },
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 1,
-                            }
-                        },
-                        {
-                            loader: 'postcss-loader'
-                        }
-                    ]
-                }
-  ],
-},
-
-};
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: [/node_modules/],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: { presets: ['es2015', 'react'] }
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
+          {
+            loader: 'postcss-loader'
+          }
+        ]
+      }
+    ]
+  }
+}
