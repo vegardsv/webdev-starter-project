@@ -1,11 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions/counterActions'
-import Nav from './nav'
 
 let Counter = ({ increment, decrement, num }) =>
   <div>
-    <Nav />
     <input value={num} type="text" />
     <button onClick={increment}> + </button>
     <button onClick={decrement}> - </button>

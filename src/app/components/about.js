@@ -1,10 +1,7 @@
 import React from 'react'
-import _ from 'lodash'
-import Nav from './nav'
 
 const About = () =>
   <div>
-    <Nav />
     <h1>About</h1>
     <p>
       Leverage agile frameworks to provide a robust synopsis for high level
