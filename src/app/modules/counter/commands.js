@@ -1,13 +1,19 @@
 import actions from './actions'
 
-const increment = actions.increment
+let promiseTo = effect =>
+  new Promise(r => {
+    r(effect())
+  })
+
+const increment = () => (dispatch, getState) => {
+  return promiseTo(() => dispatch(actions.increment())).then(() =>
+    dispatch(actions.setUpdated())
+  )
+}
 
 const decrement = actions.decrement
 
-const set = actions.set
-
 export default {
   increment,
-  decrement,
-  set
+  decrement
 }

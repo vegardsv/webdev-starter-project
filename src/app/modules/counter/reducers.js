@@ -1,5 +1,6 @@
 import types from './types'
 import { combineReducers } from 'redux'
+import getTime from 'date-fns/get_time'
 
 const counterReducer = (state = 0, action) => {
   switch (action.type) {
@@ -10,11 +11,21 @@ const counterReducer = (state = 0, action) => {
       return state + 1
     case types.DECREMENT:
       return state - 1
-    case types.SET:
-      return action.payload
   }
 }
 
-const reducers = combineReducers({ counter: counterReducer })
+const lastUpdateReducer = (state = '', action) => {
+  switch (action.type) {
+    case types.SET_UPDATED:
+      return getTime(new Date())
+  }
+
+  return state
+}
+
+const reducers = combineReducers({
+  num: counterReducer,
+  updated: lastUpdateReducer
+})
 
 export default reducers

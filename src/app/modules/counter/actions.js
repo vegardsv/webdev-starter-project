@@ -2,10 +2,10 @@ import types from './types'
 
 const increment = () => ({ type: types.INCREMENT })
 const decrement = () => ({ type: types.DECREMENT })
-const set = value => ({ type: types.SET, payload: value })
+const setUpdated = () => ({ type: types.SET_UPDATED })
 
 export default {
   increment,
   decrement,
-  set
+  setUpdated
 }

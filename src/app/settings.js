@@ -1,3 +1,7 @@
 export default {
-  appName: 'esample-application'
+  apiUrl: 'http://swapi.co/api/people/',
+  getHeaders: {
+    method: 'GET',
+    headers: new Headers()
+  }
 }

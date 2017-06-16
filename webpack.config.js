@@ -8,6 +8,8 @@ module.exports = {
     publicPath: '/'
   },
 
+  devtool: 'eval-source-map',
+
   devServer: {
     historyApiFallback: true
   },

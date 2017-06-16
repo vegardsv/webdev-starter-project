@@ -4,16 +4,25 @@ import { render } from 'react-dom'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
-import { createStore } from 'redux'
-
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
+import thunk from 'redux-thunk'
 import Counter from './components/counter'
 import About from './components/about'
 import Home from './components/home'
+import Persons from './components/persons'
+import Person from './components/person'
 import counterReducer from './modules/counter'
+import personReducer from './modules/persons'
 
 const store = createStore(
-  counterReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  combineReducers({
+    counter: counterReducer,
+    people: personReducer
+  }),
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
 )
 
 const App = () =>
@@ -30,6 +39,7 @@ const Header = () =>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/counter">Counter</Link></li>
         <li><Link to="/about">About</Link></li>
+        <li><Link to="/people">People</Link></li>
       </ul>
     </nav>
   </header>
@@ -40,6 +50,8 @@ const Main = () =>
       <Route exact path="/" component={Home} />
       <Route path="/counter" component={Counter} />
       <Route path="/about" component={About} />
+      <Route path="/people" component={Persons} />
+      <Route path="/person/:id" component={Person} />
     </Switch>
   </main>
 
