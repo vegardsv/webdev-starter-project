@@ -31,18 +31,32 @@ const App = () =>
     <Main />
   </div>
 
-const Header = () =>
-  <header>
-    <h1> webdev starter pack </h1>
-    <nav>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/counter">Counter</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/people">People</Link></li>
-      </ul>
-    </nav>
-  </header>
+const Header = () => {
+  const isActive = path => {
+    return '/' + window.location.pathname.split('/').pop() == path
+  }
+
+  return (
+    <header>
+      <h1> webdev starter pack </h1>
+      <nav>
+        <ul>
+          {[
+            { path: '/', label: 'Home' },
+            { path: '/counter', label: 'Counter' },
+            { path: '/about', label: 'About' },
+            { path: '/people', label: 'People' }
+          ].map(
+            p =>
+              !isActive(p.path)
+                ? <li key={p.label}><Link to={p.path}>{p.label}</Link></li>
+                : <li>{p.label}</li>
+          )}
+        </ul>
+      </nav>
+    </header>
+  )
+}
 
 const Main = () =>
   <main>
