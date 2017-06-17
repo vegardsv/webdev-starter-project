@@ -1,5 +1,7 @@
 const path = require('path')
 
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
   entry: './src/app/app.js',
   output: {
@@ -7,6 +9,13 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/'
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Custom template',
+      template: 'index_template.ejs'
+    })
+  ],
 
   devtool: 'eval-source-map',
 

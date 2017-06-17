@@ -11,6 +11,8 @@ const promiseTo = effect =>
 const server = url =>
   fetch(url, settings.getHeaders).then(response => response.json())
 
+const setPersonsFilter = actions.setPersonFilter
+
 const fetchPersons = () => (dispatch, getState) => {
   return server(settings.apiUrl)
     .then(data => utils.mapPersonList(data))
@@ -18,12 +20,14 @@ const fetchPersons = () => (dispatch, getState) => {
 }
 
 const fetchPerson = id => (dispatch, getState) => {
-  return server(settings.apiUrl + id).then(person =>
-    dispatch(actions.setPerson(person))
-  )
+  return promiseTo(() => dispatch(actions.fetchingPerson(true)))
+    .then(() => server(settings.apiUrl + id))
+    .then(person => dispatch(actions.setPerson(person)))
+    .then(() => dispatch(actions.fetchingPerson(false)))
 }
 
 export default {
   fetchPersons,
-  fetchPerson
+  fetchPerson,
+  setPersonsFilter
 }

@@ -10,7 +10,19 @@ const setPersons = data => ({
   payload: data
 })
 
+const fetchingPerson = isFetching => ({
+  type: types.FETCHING_PERSON,
+  payload: isFetching
+})
+
+const setPersonFilter = data => ({
+  type: types.SET_PERSONS_FILTER,
+  payload: data
+})
+
 export default {
   setPersons,
-  setPerson
+  setPerson,
+  fetchingPerson,
+  setPersonFilter
 }
