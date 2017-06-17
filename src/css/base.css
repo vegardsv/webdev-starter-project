@@ -4,6 +4,7 @@
 
 body {
   background-color: var(--mainColor);
+  font-family: 'Roboto', sans-serif;
 }
 
 .loading-indicator {
